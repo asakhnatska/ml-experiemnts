@@ -4,6 +4,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVR
 
 # Importing the dataset
 dataset = pd.read_csv('Position_Salaries.csv')
@@ -15,7 +17,6 @@ y = y.reshape(len(y),1)
 print(y)
 
 # Feature Scaling
-from sklearn.preprocessing import StandardScaler
 sc_X = StandardScaler()
 sc_y = StandardScaler()
 X = sc_X.fit_transform(X)
@@ -24,7 +25,6 @@ print(X)
 print(y)
 
 # Training the SVR model on the whole dataset
-from sklearn.svm import SVR
 regressor = SVR(kernel = 'rbf')
 regressor.fit(X, y)
 
